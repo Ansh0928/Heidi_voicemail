@@ -26,7 +26,9 @@ async function seed() {
       transcript_excerpt TEXT NOT NULL,
       flag_for_human BOOLEAN NOT NULL DEFAULT false,
       status TEXT NOT NULL DEFAULT 'new',
-      assigned_to TEXT
+      assigned_to TEXT,
+      transcript TEXT,
+      audio_url TEXT
     )
   `
 
@@ -41,6 +43,10 @@ async function seed() {
     )
   `
 
+  // Add columns if they don't exist yet (idempotent migration)
+  await sql`ALTER TABLE voicemails ADD COLUMN IF NOT EXISTS transcript TEXT`
+  await sql`ALTER TABLE voicemails ADD COLUMN IF NOT EXISTS audio_url TEXT`
+
   console.log('Clearing existing data...')
   await sql`DELETE FROM status_events`
   await sql`DELETE FROM voicemails`
@@ -51,13 +57,14 @@ async function seed() {
       INSERT INTO voicemails (
         id, caller_name, caller_number, received_at, duration, location,
         urgency, urgency_confidence, intent, summary, key_details,
-        suggested_action, transcript_excerpt, flag_for_human, status, assigned_to
+        suggested_action, transcript_excerpt, flag_for_human, status, assigned_to,
+        transcript, audio_url
       ) VALUES (
         ${vm.id}, ${vm.callerName}, ${vm.callerNumber}, ${vm.receivedAt},
         ${vm.duration}, ${vm.location}, ${vm.urgency}, ${vm.urgencyConfidence},
         ${vm.intent}, ${vm.summary}, ${vm.keyDetails}, ${vm.suggestedAction},
         ${vm.transcriptExcerpt}, ${vm.flagForHuman}, ${vm.status},
-        ${vm.assignedTo ?? null}
+        ${vm.assignedTo ?? null}, ${vm.transcript ?? null}, ${vm.audioUrl ?? null}
       )
     `
 

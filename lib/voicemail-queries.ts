@@ -19,7 +19,9 @@ export async function createSchema(): Promise<void> {
       transcript_excerpt TEXT NOT NULL,
       flag_for_human BOOLEAN NOT NULL DEFAULT false,
       status TEXT NOT NULL DEFAULT 'new',
-      assigned_to TEXT
+      assigned_to TEXT,
+      transcript TEXT,
+      audio_url TEXT
     )
   `
 
@@ -95,5 +97,7 @@ export async function getVoicemails(clinic?: string): Promise<VoicemailItem[]> {
     status: row.status as VoicemailStatus,
     statusHistory: row.status_history as VoicemailItem['statusHistory'],
     assignedTo: row.assigned_to as string | undefined,
+    transcript: row.transcript as string | undefined,
+    audioUrl: row.audio_url as string | undefined,
   }))
 }

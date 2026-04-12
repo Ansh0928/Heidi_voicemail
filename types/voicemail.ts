@@ -41,6 +41,8 @@ export interface VoicemailItem {
   keyDetails: string[]
   suggestedAction: string
   transcriptExcerpt: string
+  transcript?: string
+  audioUrl?: string
   flagForHuman: boolean
   status: VoicemailStatus
   statusHistory: StatusEvent[]

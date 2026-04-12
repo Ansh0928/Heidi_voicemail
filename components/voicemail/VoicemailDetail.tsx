@@ -18,6 +18,7 @@ import {
   Archive,
   AlertCircle,
   Sparkles,
+  Play,
 } from 'lucide-react'
 
 interface VoicemailDetailProps {
@@ -119,23 +120,33 @@ export function VoicemailDetail({ item, onStatusChange, onClose }: VoicemailDeta
           </ul>
         </div>
 
-        {/* Transcript (collapsible) */}
+        {/* Audio + Transcript (collapsible) */}
         <div className="px-5 py-3 border-b border-[#d4c4c9]">
           <button
             onClick={() => setShowTranscript(!showTranscript)}
             className="flex items-center gap-1.5 text-xs text-[#8a7078] hover:text-[#28030f] transition-colors w-full"
           >
-            <span className="font-medium uppercase tracking-wider">Transcript excerpt</span>
+            <Play className="h-3.5 w-3.5" strokeWidth={1.75} />
+            <span className="font-medium uppercase tracking-wider">Voicemail transcript</span>
             {showTranscript ? (
-              <ChevronUp className="h-3.5 w-3.5" />
+              <ChevronUp className="h-3.5 w-3.5 ml-auto" />
             ) : (
-              <ChevronDown className="h-3.5 w-3.5" />
+              <ChevronDown className="h-3.5 w-3.5 ml-auto" />
             )}
           </button>
           {showTranscript && (
-            <blockquote className="mt-3 pl-3 border-l-2 border-[#d4c4c9] text-sm text-[#8a7078] italic leading-relaxed">
-              {item.transcriptExcerpt}
-            </blockquote>
+            <div className="mt-3 space-y-3">
+              {item.audioUrl && (
+                <audio
+                  controls
+                  src={item.audioUrl}
+                  className="w-full h-8 [&::-webkit-media-controls-panel]:bg-[#f9f4f1]"
+                />
+              )}
+              <blockquote className="pl-3 border-l-2 border-[#d4c4c9] text-sm text-[#8a7078] leading-relaxed">
+                {item.transcript ?? item.transcriptExcerpt}
+              </blockquote>
+            </div>
           )}
         </div>
 
@@ -149,6 +160,8 @@ export function VoicemailDetail({ item, onStatusChange, onClose }: VoicemailDeta
                   <span className="font-medium text-[#28030f]">{event.changedBy}</span>
                   {' · '}
                   <span>{event.status}</span>
+                  {' · '}
+                  <span>{formatRelativeTime(event.changedAt)}</span>
                   {event.note && <span className="block mt-0.5 text-[#8a7078]">{event.note}</span>}
                 </div>
               ))}
