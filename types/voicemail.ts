@@ -18,7 +18,7 @@ export type IntentCode =
 
 export type VoicemailStatus = 'new' | 'in-progress' | 'done'
 
-export type Location = 'Clinic 1' | 'Clinic 2' | 'Clinic 3'
+export type Location = 'Varsity Lakes' | 'Labrador' | 'Southport'
 
 export interface StatusEvent {
   status: VoicemailStatus

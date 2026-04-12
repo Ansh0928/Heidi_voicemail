@@ -13,7 +13,7 @@ export default function VoicemailsPage() {
 
   return (
     <div className="flex h-screen bg-[#f9f4f1] overflow-hidden">
-      <HeiSidebar />
+      <HeiSidebar selectedClinic={clinic} onClinicChange={setClinic} />
       <main className="flex-1 overflow-hidden flex flex-col">
         <VoicemailList initialItems={MOCK_VOICEMAILS} selectedClinic={clinic} onClinicChange={setClinic} />
       </main>
