@@ -9,8 +9,10 @@ export type StatusFilter = VoicemailStatus | 'all'
 interface FilterBarProps {
   urgencyFilter: UrgencyFilter
   statusFilter: StatusFilter
+  flaggedOnly: boolean
   onUrgencyChange: (v: UrgencyFilter) => void
   onStatusChange: (v: StatusFilter) => void
+  onFlaggedChange: (v: boolean) => void
 }
 
 const URGENCY_OPTIONS: { value: UrgencyFilter; label: string }[] = [
@@ -57,7 +59,7 @@ function TabGroup<T extends string>({
   )
 }
 
-export function FilterBar({ urgencyFilter, statusFilter, onUrgencyChange, onStatusChange }: FilterBarProps) {
+export function FilterBar({ urgencyFilter, statusFilter, flaggedOnly, onUrgencyChange, onStatusChange, onFlaggedChange }: FilterBarProps) {
   return (
     <div className="flex flex-wrap items-center gap-3">
       <div className="flex items-center gap-2">
@@ -68,6 +70,18 @@ export function FilterBar({ urgencyFilter, statusFilter, onUrgencyChange, onStat
         <span className="text-xs text-[#8a7078] font-medium uppercase tracking-wider">Status</span>
         <TabGroup options={STATUS_OPTIONS} value={statusFilter} onChange={onStatusChange} />
       </div>
+      <button
+        onClick={() => onFlaggedChange(!flaggedOnly)}
+        className={cn(
+          'flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium border transition-all',
+          flaggedOnly
+            ? 'bg-amber-50 border-amber-300 text-amber-700'
+            : 'bg-[#f9f4f1] border-[#d4c4c9] text-[#8a7078] hover:text-[#28030f]',
+        )}
+      >
+        <span className="h-2 w-2 rounded-full bg-amber-400 shrink-0" />
+        Needs review
+      </button>
     </div>
   )
 }

@@ -65,8 +65,8 @@ export function VoicemailCard({ item, isSelected, onClick }: VoicemailCardProps)
           {item.summary}
         </p>
 
-        {/* Row 3: suggested action (urgent/high only) */}
-        {(item.urgency === 'urgent' || item.urgency === 'high') && item.status === 'new' && (
+        {/* Row 3: suggested action */}
+        {item.urgency !== 'low' && item.status === 'new' && (
           <div className="mt-2 flex items-start gap-1.5">
             <span className="mt-0.5 shrink-0 h-1.5 w-1.5 rounded-full bg-[#28030f]" />
             <p className="text-[12px] text-[#28030f] font-medium leading-snug line-clamp-1">

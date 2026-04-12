@@ -42,7 +42,7 @@ export function HeidiNav({ clinicName = 'Harbour to Sunset GP' }: HeidiNavProps)
               <div className="h-6 w-6 rounded-full bg-[#28030f] flex items-center justify-center">
                 <User className="h-3.5 w-3.5 text-[#f9f4f1]" strokeWidth={1.75} />
               </div>
-              <span className="hidden sm:block">Sarah K.</span>
+              <span className="hidden sm:block">Shaz B.</span>
             </button>
           </div>
         </div>

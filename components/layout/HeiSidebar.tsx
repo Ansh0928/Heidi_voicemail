@@ -28,14 +28,14 @@ function EvidenceIcon({ className }: { className?: string }) {
   )
 }
 
-// Custom icon matching the "✓≡" Tasks icon shown in reference image
+// Custom icon matching the "□≡" Tasks icon — small square checkbox + line, two rows
 function TasksIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
-      <path d="M3.5 6.5L5.5 8.5L8.5 4.5" />
-      <line x1="11" y1="6.5" x2="15.5" y2="6.5" />
-      <path d="M3.5 11.5L5.5 13.5L8.5 9.5" />
-      <line x1="11" y1="11.5" x2="15.5" y2="11.5" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <rect x="3" y="6" width="5" height="5" rx="1" />
+      <line x1="11" y1="8.5" x2="21" y2="8.5" />
+      <rect x="3" y="14" width="5" height="5" rx="1" />
+      <line x1="11" y1="16.5" x2="21" y2="16.5" />
     </svg>
   )
 }
@@ -238,8 +238,8 @@ export function HeiSidebar({ selectedClinic, onClinicChange }: HeiSidebarProps) 
           </div>
           {!collapsed && (
             <div className="text-left min-w-0">
-              <p className="text-[13px] font-medium text-[#3d1520] truncate leading-tight">Sarah Kim</p>
-              <p className="text-[11px] text-[#a08090] truncate">sarah@harbourgp.com</p>
+              <p className="text-[13px] font-medium text-[#3d1520] truncate leading-tight">Shaz Brahmavar</p>
+              <p className="text-[11px] text-[#a08090] truncate">shaz@harbourgp.com</p>
             </div>
           )}
         </button>

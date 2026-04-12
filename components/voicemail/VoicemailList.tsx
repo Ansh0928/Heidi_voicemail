@@ -22,6 +22,7 @@ export function VoicemailList({ initialItems, selectedClinic, onClinicChange }: 
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [urgencyFilter, setUrgencyFilter] = useState<UrgencyFilter>('all')
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('new')
+  const [flaggedOnly, setFlaggedOnly] = useState(false)
 
   const clinicItems = useMemo(
     () => selectedClinic === 'all' ? items : items.filter(v => v.location === selectedClinic),
@@ -34,8 +35,9 @@ export function VoicemailList({ initialItems, selectedClinic, onClinicChange }: 
     if (selectedClinic !== 'all') list = list.filter(v => v.location === selectedClinic)
     if (urgencyFilter !== 'all') list = list.filter(v => v.urgency === urgencyFilter)
     if (statusFilter !== 'all') list = list.filter(v => v.status === statusFilter)
+    if (flaggedOnly) list = list.filter(v => v.flagForHuman)
     return sortByUrgency(list)
-  }, [items, selectedClinic, urgencyFilter, statusFilter])
+  }, [items, selectedClinic, urgencyFilter, statusFilter, flaggedOnly])
 
   const selectedItem = items.find(v => v.id === selectedId) ?? null
 
@@ -46,7 +48,7 @@ export function VoicemailList({ initialItems, selectedClinic, onClinicChange }: 
         const event = {
           status,
           changedAt: new Date().toISOString(),
-          changedBy: 'Sarah K.',
+          changedBy: 'Shaz B.',
           note,
         }
         return { ...v, status, statusHistory: [...v.statusHistory, event] }
@@ -64,15 +66,24 @@ export function VoicemailList({ initialItems, selectedClinic, onClinicChange }: 
           <FilterBar
             urgencyFilter={urgencyFilter}
             statusFilter={statusFilter}
+            flaggedOnly={flaggedOnly}
             onUrgencyChange={setUrgencyFilter}
             onStatusChange={setStatusFilter}
+            onFlaggedChange={setFlaggedOnly}
           />
         </div>
         <div className="flex-1 overflow-y-auto px-3 pb-4 space-y-2">
           {filtered.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 text-center">
               <InboxIcon className="h-8 w-8 text-[#d4c4c9] mb-3" strokeWidth={1.25} />
-              <p className="text-sm text-[#8a7078]">No voicemails match this filter</p>
+              {statusFilter === 'new' && !flaggedOnly ? (
+                <>
+                  <p className="text-sm font-medium text-[#28030f]">Morning queue complete</p>
+                  <p className="text-xs text-[#8a7078] mt-1">All new voicemails have been actioned</p>
+                </>
+              ) : (
+                <p className="text-sm text-[#8a7078]">No voicemails match this filter</p>
+              )}
             </div>
           ) : (
             filtered.map(item => (

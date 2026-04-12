@@ -65,7 +65,7 @@ export function StatsBar({ stats, selectedClinic, onClinicChange }: StatsBarProp
         <div>
           <h1 className="text-xl font-semibold text-[#28030f] tracking-tight">Morning voicemail</h1>
           <p className="text-sm text-[#8a7078] mt-0.5">
-            {stats.total} messages to action · As of {timeLabel}
+            {stats.total} messages to action · {stats.done} actioned · As of {timeLabel}
           </p>
         </div>
 
