@@ -14,3 +14,14 @@ out/
 *.pem
 .playwright-mcp/
 .gstack/
+.superpowers/
+tsconfig.tsbuildinfo
+
+# claude / skills
+CLAUDE.md
+.claude/
+.claude-memory.md
+
+# screenshots / local assets
+*.png
+*.jpg

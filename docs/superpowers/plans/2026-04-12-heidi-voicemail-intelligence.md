@@ -516,7 +516,7 @@ export type IntentCode =
 
 export type VoicemailStatus = 'new' | 'in-progress' | 'done'
 
-export type Location = 'Varsity Lakes' | 'Labrador'
+export type Location = 'Clinic 1' | 'Clinic 2'
 
 export interface StatusEvent {
   at: string          // ISO timestamp
@@ -684,7 +684,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0412 334 891',
     receivedAt: yesterday(9),
     duration: 87,
-    location: 'Varsity Lakes',
+    location: 'Clinic 1',
     urgency: 'urgent',
     urgencyConfidence: 0.97,
     intent: 'symptom-acute',
@@ -708,7 +708,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0455 129 003',
     receivedAt: yesterday(7.5),
     duration: 63,
-    location: 'Labrador',
+    location: 'Clinic 2',
     urgency: 'urgent',
     urgencyConfidence: 0.94,
     intent: 'symptom-acute',
@@ -732,7 +732,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0401 773 256',
     receivedAt: yesterday(11),
     duration: 112,
-    location: 'Varsity Lakes',
+    location: 'Clinic 1',
     urgency: 'high',
     urgencyConfidence: 0.88,
     intent: 'mental-health',
@@ -756,7 +756,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0488 002 774',
     receivedAt: yesterday(10),
     duration: 44,
-    location: 'Labrador',
+    location: 'Clinic 2',
     urgency: 'high',
     urgencyConfidence: 0.91,
     intent: 'rx-refill',
@@ -780,7 +780,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0437 556 018',
     receivedAt: yesterday(8),
     duration: 75,
-    location: 'Varsity Lakes',
+    location: 'Clinic 1',
     urgency: 'high',
     urgencyConfidence: 0.83,
     intent: 'results',
@@ -808,7 +808,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0411 882 347',
     receivedAt: yesterday(13),
     duration: 58,
-    location: 'Labrador',
+    location: 'Clinic 2',
     urgency: 'normal',
     urgencyConfidence: 0.89,
     intent: 'symptom-routine',
@@ -832,7 +832,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0423 001 654',
     receivedAt: yesterday(12),
     duration: 38,
-    location: 'Varsity Lakes',
+    location: 'Clinic 1',
     urgency: 'normal',
     urgencyConfidence: 0.95,
     intent: 'rx-refill',
@@ -856,7 +856,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0466 334 772',
     receivedAt: yesterday(14),
     duration: 52,
-    location: 'Labrador',
+    location: 'Clinic 2',
     urgency: 'normal',
     urgencyConfidence: 0.92,
     intent: 'referral',
@@ -880,7 +880,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0499 112 887',
     receivedAt: yesterday(15),
     duration: 29,
-    location: 'Varsity Lakes',
+    location: 'Clinic 1',
     urgency: 'normal',
     urgencyConfidence: 0.96,
     intent: 'med-cert',
@@ -908,7 +908,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0413 445 002',
     receivedAt: yesterday(16),
     duration: 21,
-    location: 'Labrador',
+    location: 'Clinic 2',
     urgency: 'low',
     urgencyConfidence: 0.98,
     intent: 'appt-change',
@@ -934,7 +934,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0478 334 115',
     receivedAt: yesterday(10.5),
     duration: 43,
-    location: 'Varsity Lakes',
+    location: 'Clinic 1',
     urgency: 'low',
     urgencyConfidence: 0.95,
     intent: 'appt-book',
@@ -958,19 +958,19 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0402 887 334',
     receivedAt: yesterday(13.5),
     duration: 17,
-    location: 'Labrador',
+    location: 'Clinic 2',
     urgency: 'low',
     urgencyConfidence: 0.99,
     intent: 'admin',
-    summary: 'David is asking about parking availability at the Labrador clinic and wants to confirm the Saturday opening hours.',
+    summary: 'David is asking about parking availability at the Clinic 2 clinic and wants to confirm the Saturday opening hours.',
     keyDetails: [
-      'Query: parking at Labrador clinic',
+      'Query: parking at Clinic 2 clinic',
       'Query: Saturday opening hours',
       'No clinical content',
       'Can be resolved with standard clinic info',
     ],
     suggestedAction: 'Send standard clinic info SMS: parking details + Saturday hours. No callback needed unless patient requests.',
-    transcriptExcerpt: '"Just a quick one — is there parking at your Labrador clinic? And are you open Saturdays?"',
+    transcriptExcerpt: '"Just a quick one — is there parking at your Clinic 2 clinic? And are you open Saturdays?"',
     flagForHuman: false,
     status: 'new',
     statusHistory: [{ at: yesterday(13.5), status: 'new' }],
@@ -984,8 +984,8 @@ export function getStats(voicemails: VoicemailItem[]) {
     urgent: newItems.filter(v => v.urgency === 'urgent').length,
     high: newItems.filter(v => v.urgency === 'high').length,
     flagged: newItems.filter(v => v.flagForHuman).length,
-    varsityLakes: newItems.filter(v => v.location === 'Varsity Lakes').length,
-    labrador: newItems.filter(v => v.location === 'Labrador').length,
+    varsityLakes: newItems.filter(v => v.location === 'Clinic 1').length,
+    labrador: newItems.filter(v => v.location === 'Clinic 2').length,
   }
 }
 ```
@@ -1257,9 +1257,9 @@ export function StatsBar({ urgent, high, total, flagged, varsityLakes, labrador 
       {/* Location breakdown */}
       <div className="flex items-center gap-2 text-xs text-[rgb(var(--hv-text-muted))]">
         <MapPin className="h-3 w-3" />
-        <span>Varsity Lakes <strong className="text-[rgb(var(--hv-text))]">{varsityLakes}</strong></span>
+        <span>Clinic 1 <strong className="text-[rgb(var(--hv-text))]">{varsityLakes}</strong></span>
         <span className="text-[rgb(var(--hv-border))]">·</span>
-        <span>Labrador <strong className="text-[rgb(var(--hv-text))]">{labrador}</strong></span>
+        <span>Clinic 2 <strong className="text-[rgb(var(--hv-text))]">{labrador}</strong></span>
       </div>
     </div>
   )

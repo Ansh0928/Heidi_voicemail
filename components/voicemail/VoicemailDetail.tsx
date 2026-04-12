@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import type { VoicemailItem, VoicemailStatus } from '@/types/voicemail'
 import { cn, formatRelativeTime, formatDuration, formatPhoneDisplay } from '@/lib/utils'
 import { URGENCY_CONFIG, INTENT_LABELS } from '@/lib/urgency'
@@ -19,22 +19,58 @@ import {
   AlertCircle,
   Sparkles,
   Play,
+  RotateCcw,
 } from 'lucide-react'
+
+const STAFF = ['Shaz B.', 'Marcus T.', 'Priya K.', 'Jess R.']
+const CURRENT_USER = 'Shaz B.'
 
 interface VoicemailDetailProps {
   item: VoicemailItem
-  onStatusChange: (id: string, status: VoicemailStatus, note?: string) => void
+  onStatusChange: (id: string, status: VoicemailStatus, note?: string, assignedTo?: string, claimedBy?: string) => void
   onClose: () => void
 }
 
 export function VoicemailDetail({ item, onStatusChange, onClose }: VoicemailDetailProps) {
   const [showTranscript, setShowTranscript] = useState(false)
   const [note, setNote] = useState('')
+  const [showAssignDropdown, setShowAssignDropdown] = useState(false)
+  const assignRef = useRef<HTMLDivElement>(null)
   const config = URGENCY_CONFIG[item.urgency]
 
-  const handleAction = (status: VoicemailStatus) => {
-    onStatusChange(item.id, status, note || undefined)
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (assignRef.current && !assignRef.current.contains(e.target as Node)) {
+        setShowAssignDropdown(false)
+      }
+    }
+    if (showAssignDropdown) document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [showAssignDropdown])
+
+  const handleCallBack = () => {
+    onStatusChange(item.id, 'in-progress', note || `Called back by ${CURRENT_USER}`, undefined, CURRENT_USER)
     setNote('')
+  }
+
+  const handleAssign = (staffMember: string) => {
+    onStatusChange(item.id, 'in-progress', `Assigned to ${staffMember}`, staffMember)
+    setShowAssignDropdown(false)
+    setNote('')
+  }
+
+  const handleResolve = () => {
+    onStatusChange(item.id, 'done', note || undefined)
+    setNote('')
+  }
+
+  const handleArchive = () => {
+    onStatusChange(item.id, 'done', 'Archived')
+    setNote('')
+  }
+
+  const handleReopen = () => {
+    onStatusChange(item.id, 'new', 'Reopened', undefined, undefined)
   }
 
   return (

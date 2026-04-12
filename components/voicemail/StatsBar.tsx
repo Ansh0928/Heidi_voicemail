@@ -8,9 +8,9 @@ import { cn } from '@/lib/utils'
 
 const CLINICS: { value: ClinicFilter; label: string }[] = [
   { value: 'all', label: 'All clinics' },
-  { value: 'Varsity Lakes', label: 'Varsity Lakes' },
-  { value: 'Labrador', label: 'Labrador' },
-  { value: 'Southport', label: 'Southport' },
+  { value: 'Clinic 1', label: 'Clinic 1' },
+  { value: 'Clinic 2', label: 'Clinic 2' },
+  { value: 'Clinic 3', label: 'Clinic 3' },
 ]
 
 interface StatsBarProps {

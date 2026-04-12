@@ -41,7 +41,13 @@ export function VoicemailList({ initialItems, selectedClinic, onClinicChange }: 
 
   const selectedItem = items.find(v => v.id === selectedId) ?? null
 
-  function handleStatusChange(id: string, status: VoicemailStatus, note?: string) {
+  function handleStatusChange(
+    id: string,
+    status: VoicemailStatus,
+    note?: string,
+    assignedTo?: string,
+    claimedBy?: string,
+  ) {
     setItems(prev =>
       prev.map(v => {
         if (v.id !== id) return v
@@ -51,10 +57,15 @@ export function VoicemailList({ initialItems, selectedClinic, onClinicChange }: 
           changedBy: 'Shaz B.',
           note,
         }
-        return { ...v, status, statusHistory: [...v.statusHistory, event] }
+        return {
+          ...v,
+          status,
+          statusHistory: [...v.statusHistory, event],
+          ...(assignedTo !== undefined ? { assignedTo } : {}),
+          ...(claimedBy !== undefined ? { claimedBy } : {}),
+        }
       }),
     )
-    if (status === 'done') setSelectedId(null)
   }
 
   return (

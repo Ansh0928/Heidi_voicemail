@@ -42,9 +42,9 @@ function TasksIcon({ className }: { className?: string }) {
 
 const CLINICS: { value: ClinicFilter; label: string }[] = [
   { value: 'all', label: 'All clinics' },
-  { value: 'Varsity Lakes', label: 'Varsity Lakes' },
-  { value: 'Labrador', label: 'Labrador' },
-  { value: 'Southport', label: 'Southport' },
+  { value: 'Clinic 1', label: 'Clinic 1' },
+  { value: 'Clinic 2', label: 'Clinic 2' },
+  { value: 'Clinic 3', label: 'Clinic 3' },
 ]
 
 interface NavItemProps {
@@ -234,7 +234,7 @@ export function HeiSidebar({ selectedClinic, onClinicChange }: HeiSidebarProps) 
           )}
         >
           <div className="h-7 w-7 rounded-full bg-[#4c2934] flex items-center justify-center shrink-0">
-            <span className="text-[#f9f4f1] text-[11px] font-bold">S</span>
+            <span className="text-[#f9f4f1] text-[10px] font-bold tracking-tight">SB</span>
           </div>
           {!collapsed && (
             <div className="text-left min-w-0">
