@@ -7,7 +7,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0412345678',
     receivedAt: new Date(Date.now() - 1000 * 60 * 18).toISOString(),
     duration: 87,
-    location: 'Varsity Lakes',
+    location: 'Clinic 1',
     urgency: 'urgent',
     urgencyConfidence: 0.97,
     intent: 'symptom-acute',
@@ -30,7 +30,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0487654321',
     receivedAt: new Date(Date.now() - 1000 * 60 * 42).toISOString(),
     duration: 65,
-    location: 'Labrador',
+    location: 'Clinic 1',
     urgency: 'urgent',
     urgencyConfidence: 0.94,
     intent: 'symptom-acute',
@@ -53,7 +53,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0455123456',
     receivedAt: new Date(Date.now() - 1000 * 60 * 71).toISOString(),
     duration: 112,
-    location: 'Varsity Lakes',
+    location: 'Clinic 1',
     urgency: 'high',
     urgencyConfidence: 0.89,
     intent: 'mental-health',
@@ -76,7 +76,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0423987654',
     receivedAt: new Date(Date.now() - 1000 * 60 * 95).toISOString(),
     duration: 48,
-    location: 'Varsity Lakes',
+    location: 'Clinic 2',
     urgency: 'high',
     urgencyConfidence: 0.91,
     intent: 'rx-refill',
@@ -99,7 +99,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0431567890',
     receivedAt: new Date(Date.now() - 1000 * 60 * 130).toISOString(),
     duration: 73,
-    location: 'Labrador',
+    location: 'Clinic 2',
     urgency: 'high',
     urgencyConfidence: 0.88,
     intent: 'results',
@@ -125,7 +125,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0467234567',
     receivedAt: new Date(Date.now() - 1000 * 60 * 180).toISOString(),
     duration: 34,
-    location: 'Varsity Lakes',
+    location: 'Clinic 2',
     urgency: 'normal',
     urgencyConfidence: 0.95,
     intent: 'symptom-routine',
@@ -148,7 +148,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0412765432',
     receivedAt: new Date(Date.now() - 1000 * 60 * 210).toISOString(),
     duration: 41,
-    location: 'Labrador',
+    location: 'Clinic 3',
     urgency: 'normal',
     urgencyConfidence: 0.96,
     intent: 'rx-refill',
@@ -171,7 +171,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0445678901',
     receivedAt: new Date(Date.now() - 1000 * 60 * 240).toISOString(),
     duration: 55,
-    location: 'Varsity Lakes',
+    location: 'Clinic 3',
     urgency: 'normal',
     urgencyConfidence: 0.93,
     intent: 'referral',
@@ -194,7 +194,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0478345678',
     receivedAt: new Date(Date.now() - 1000 * 60 * 295).toISOString(),
     duration: 29,
-    location: 'Labrador',
+    location: 'Clinic 3',
     urgency: 'normal',
     urgencyConfidence: 0.97,
     intent: 'med-cert',
@@ -219,7 +219,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0434567890',
     receivedAt: new Date(Date.now() - 1000 * 60 * 340).toISOString(),
     duration: 22,
-    location: 'Varsity Lakes',
+    location: 'Clinic 1',
     urgency: 'low',
     urgencyConfidence: 0.99,
     intent: 'appt-change',
@@ -244,7 +244,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0456789012',
     receivedAt: new Date(Date.now() - 1000 * 60 * 390).toISOString(),
     duration: 44,
-    location: 'Labrador',
+    location: 'Clinic 2',
     urgency: 'low',
     urgencyConfidence: 0.92,
     intent: 'appt-book',
@@ -267,7 +267,7 @@ export const MOCK_VOICEMAILS: VoicemailItem[] = [
     callerNumber: '0489012345',
     receivedAt: new Date(Date.now() - 1000 * 60 * 420).toISOString(),
     duration: 31,
-    location: 'Varsity Lakes',
+    location: 'Clinic 3',
     urgency: 'low',
     urgencyConfidence: 0.96,
     intent: 'admin',
@@ -292,8 +292,9 @@ export interface VoicemailStats {
   high: number
   flagged: number
   needsAction: number
-  varsityLakes: number
-  labrador: number
+  clinic1: number
+  clinic2: number
+  clinic3: number
 }
 
 export function getStats(items: VoicemailItem[]): VoicemailStats {
@@ -304,7 +305,8 @@ export function getStats(items: VoicemailItem[]): VoicemailStats {
     high: active.filter(v => v.urgency === 'high').length,
     flagged: active.filter(v => v.flagForHuman).length,
     needsAction: active.filter(v => v.status === 'new').length,
-    varsityLakes: active.filter(v => v.location === 'Varsity Lakes').length,
-    labrador: active.filter(v => v.location === 'Labrador').length,
+    clinic1: active.filter(v => v.location === 'Clinic 1').length,
+    clinic2: active.filter(v => v.location === 'Clinic 2').length,
+    clinic3: active.filter(v => v.location === 'Clinic 3').length,
   }
 }

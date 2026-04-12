@@ -1,95 +1,38 @@
 'use client'
 
-import { useState } from 'react'
-import { ChevronRight, PanelLeft, Plus, Globe, Settings, HelpCircle, Bell, Phone } from 'lucide-react'
+import { useState, useRef, useEffect } from 'react'
+import { ChevronRight, ChevronDown, PanelLeft, Plus, Globe, Settings, HelpCircle, Bell, Phone, AudioLines, Blocks, Building, BookOpen, MessageSquare, MapPin, Check } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import type { ClinicFilter } from '@/app/voicemails/page'
 
-// Real Heidi brand mark — approximates the infinity/knot logo
+// Heidi brand mark — exact SVG paths from heidihealth.com
 function HeidiMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 36 36" fill="none" className={className} aria-hidden="true">
-      {/* Left lobe */}
-      <path d="M9 18 C9 12 14 9 18 12 C22 15 22 21 18 24 C14 27 9 24 9 18Z" stroke="currentColor" strokeWidth="2" fill="none"/>
-      {/* Right lobe */}
-      <path d="M27 18 C27 12 22 9 18 12 C14 15 14 21 18 24 C22 27 27 24 27 18Z" stroke="currentColor" strokeWidth="2" fill="none"/>
-      {/* Centre crossings */}
-      <circle cx="18" cy="18" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    <svg viewBox="0 0 37 37" fill="currentColor" className={className} width="32" height="32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path d="M36.8261 11.0202C36.5807 5.52687 32.1015 1.06293 26.5656 0.794546C23.8556 0.662055 21.3502 1.52325 19.3867 3.04011C18.9674 3.36454 18.3726 3.36454 17.9516 3.04011C15.9881 1.52155 13.4827 0.662055 10.7727 0.794546C5.23676 1.06293 0.757592 5.52687 0.510453 11.0202C0.389441 13.7244 1.27914 16.2179 2.83526 18.1645C3.17102 18.5858 3.17102 19.1854 2.83526 19.6049C1.28084 21.5532 0.391145 24.0468 0.510453 26.751C0.755887 32.2443 5.23335 36.7082 10.771 36.9783C13.481 37.1108 15.9864 36.2496 17.9499 34.7327C18.3692 34.4083 18.964 34.4083 19.385 34.7327C21.3485 36.2496 23.8539 37.1091 26.5639 36.9783C32.0998 36.7099 36.579 32.2443 36.8244 26.751C36.9455 24.0468 36.0558 21.5532 34.4996 19.6066C34.1639 19.1854 34.1639 18.5858 34.4996 18.1662C36.0558 16.2213 36.9455 13.7261 36.8244 11.0219L36.8261 11.0202ZM31.9055 19.3875C34.1775 21.5006 35.345 24.7704 34.4519 28.2509C33.6594 31.3287 31.2136 33.7544 28.1115 34.5391C24.6005 35.4258 21.3059 34.2673 19.1754 32.0099C18.901 31.7194 18.4391 31.7194 18.1646 32.0099C16.0341 34.2656 12.7395 35.4258 9.22847 34.5391C6.12475 33.7561 3.67894 31.3287 2.88809 28.2509C1.99328 24.7704 3.1625 21.5023 5.43447 19.3875C5.72763 19.1157 5.72763 18.6571 5.43447 18.3853C3.1625 16.2723 1.99499 13.0024 2.88809 9.522C3.68064 6.44412 6.12646 4.01851 9.22847 3.23375C12.7395 2.34707 16.0341 3.50553 18.1646 5.76298C18.4391 6.05344 18.901 6.05344 19.1754 5.76298C21.3059 3.50722 24.6005 2.34707 28.1115 3.23375C31.2153 4.01681 33.6611 6.44412 34.4519 9.522C35.3467 13.0024 34.1775 16.2723 31.9055 18.3853C31.6124 18.6571 31.6124 19.1157 31.9055 19.3875Z" />
+      <path d="M26.521 6.22169C24.6632 6.22169 23.0287 7.15422 22.0402 8.77809C21.2596 10.0588 20.7482 11.4789 20.5846 14.3699C20.5488 14.9984 20.0307 15.4927 19.3983 15.5012C19.1614 15.5046 18.9194 15.5063 18.6672 15.5063C18.4149 15.5063 18.1712 15.5063 17.936 15.5012C17.3036 15.4927 16.7838 14.9984 16.7497 14.3699C16.5861 11.4772 16.0731 10.0571 15.2942 8.77809C14.3039 7.15422 12.6711 6.22169 10.8133 6.22169C8.63676 6.22169 6.19946 8.17848 6.19946 10.796C6.19946 12.9584 7.28687 14.8489 9.18217 15.9785C10.9888 17.0554 13.2046 17.723 18.6689 17.723C24.1332 17.723 26.3489 17.0554 28.1556 15.9785C30.0509 14.8489 31.1383 12.9601 31.1383 10.796C31.1383 8.17848 28.7027 6.22169 26.5245 6.22169H26.521ZM10.3275 14.0795C8.67425 13.0943 8.42882 11.5995 8.42882 10.7977C8.42882 9.52718 9.7361 8.44007 10.8082 8.44007C11.8802 8.44007 12.7853 8.95305 13.3767 9.92635C13.9869 10.9302 14.3908 12.0972 14.5221 14.606C14.5408 14.9865 14.2067 15.2872 13.8267 15.2311C11.9757 14.9593 11.0706 14.5228 10.3292 14.0812H10.3275V14.0795ZM27.0017 14.0795C26.2603 14.5228 25.3535 14.9593 23.5043 15.2294C23.1242 15.2838 22.7901 14.9831 22.8089 14.6043C22.9401 12.0972 23.3423 10.9285 23.9542 9.92466C24.5456 8.95305 25.4336 8.43837 26.5227 8.43837C27.6119 8.43837 28.9021 9.52718 28.9021 10.796C28.9021 11.5995 28.655 13.0926 27.0034 14.0778L27.0017 14.0795Z" />
+      <path d="M10.8147 31.5495C12.6725 31.5495 14.3071 30.6169 15.2956 28.9931C16.0762 27.7123 16.5875 26.2923 16.7512 23.4013C16.787 22.7728 17.3051 22.2785 17.9374 22.27C18.1743 22.2666 18.4164 22.2649 18.6686 22.2649C18.9209 22.2649 19.1629 22.2649 19.3998 22.27C20.0321 22.2785 20.552 22.7728 20.5861 23.4013C20.7497 26.294 21.2627 27.714 22.0416 28.9931C23.0319 30.6169 24.6647 31.5495 26.5225 31.5495C28.699 31.5495 31.1363 29.5927 31.1363 26.9751C31.1363 24.8128 30.0489 22.9222 28.1536 21.7927C26.3469 20.7158 24.1312 20.0482 18.6669 20.0482C13.2026 20.0482 10.9869 20.7158 9.18021 21.7927C7.28492 22.9222 6.19751 24.8111 6.19751 26.9751C6.19751 29.5927 8.6331 31.5495 10.8113 31.5495H10.8147ZM27.01 23.6917C28.6632 24.6769 28.9087 26.1717 28.9087 26.9734C28.9087 28.244 27.6014 29.3311 26.5293 29.3311C25.4572 29.3311 24.5522 28.8181 23.9608 27.8448C23.3506 26.8409 22.9467 25.6723 22.8154 23.1651C22.7967 22.7847 23.1307 22.484 23.5108 22.5401C25.3618 22.8118 26.2668 23.2484 27.0083 23.69H27.01V23.6917ZM10.3358 23.6917C11.0772 23.2484 11.984 22.8118 13.8332 22.5418C14.2133 22.4874 14.5474 22.7881 14.5286 23.1668C14.3974 25.674 13.9951 26.8426 13.3833 27.8465C12.7918 28.8181 11.9038 29.3345 10.8147 29.3345C9.72562 29.3345 8.43539 28.2457 8.43539 26.9768C8.43539 26.1734 8.68253 24.6803 10.3341 23.6951H10.3358V23.6917Z" />
     </svg>
   )
 }
 
-// Custom icons matching Heidi's stroke style
-function ScribeIcon() {
+// Custom icon matching the "✓≡" Tasks icon shown in reference image
+function TasksIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 20 20" fill="none" className="h-[18px] w-[18px]" aria-hidden="true">
-      <rect x="2.5" y="11" width="1.5" height="5" rx=".75" fill="currentColor" opacity=".45"/>
-      <rect x="5.75" y="8" width="1.5" height="8" rx=".75" fill="currentColor" opacity=".65"/>
-      <rect x="9" y="4.5" width="1.5" height="11.5" rx=".75" fill="currentColor"/>
-      <rect x="12.25" y="8" width="1.5" height="8" rx=".75" fill="currentColor" opacity=".65"/>
-      <rect x="15.5" y="11" width="1.5" height="5" rx=".75" fill="currentColor" opacity=".45"/>
+    <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M3.5 6.5L5.5 8.5L8.5 4.5" />
+      <line x1="11" y1="6.5" x2="15.5" y2="6.5" />
+      <path d="M3.5 11.5L5.5 13.5L8.5 9.5" />
+      <line x1="11" y1="11.5" x2="15.5" y2="11.5" />
     </svg>
   )
 }
 
-function EvidenceIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" className="h-[18px] w-[18px]" aria-hidden="true">
-      <circle cx="10" cy="10" r="7.25" stroke="currentColor" strokeWidth="1.5"/>
-      <circle cx="10" cy="10" r="3.5" stroke="currentColor" strokeWidth="1.5"/>
-    </svg>
-  )
-}
-
-function TasksIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" className="h-[18px] w-[18px]" aria-hidden="true">
-      {/* Check boxes */}
-      <rect x="2.5" y="4.5" width="3.5" height="3.5" rx=".75" stroke="currentColor" strokeWidth="1.4"/>
-      <path d="M3.5 6.5l.8.8 1.6-1.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-      <rect x="2.5" y="10" width="3.5" height="3.5" rx=".75" stroke="currentColor" strokeWidth="1.4"/>
-      <rect x="2.5" y="15.5" width="3.5" height="3.5" rx=".75" stroke="currentColor" strokeWidth="1.4"/>
-      {/* Lines */}
-      <rect x="8.5" y="5.75" width="9" height="1.25" rx=".625" fill="currentColor" opacity=".5"/>
-      <rect x="8.5" y="11.25" width="9" height="1.25" rx=".625" fill="currentColor" opacity=".5"/>
-      <rect x="8.5" y="16.75" width="9" height="1.25" rx=".625" fill="currentColor" opacity=".5"/>
-    </svg>
-  )
-}
-
-function CommsIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" className="h-[18px] w-[18px]" aria-hidden="true">
-      <path
-        d="M4 5.5C4 4.672 4.672 4 5.5 4h9C15.328 4 16 4.672 16 5.5v7c0 .828-.672 1.5-1.5 1.5H7.5L4 15.5V5.5z"
-        stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"
-      />
-      <circle cx="7.5" cy="9" r="1" fill="currentColor"/>
-      <circle cx="10" cy="9" r="1" fill="currentColor"/>
-      <circle cx="12.5" cy="9" r="1" fill="currentColor"/>
-    </svg>
-  )
-}
-
-function TemplatesGridIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" className="h-[18px] w-[18px]" aria-hidden="true">
-      <rect x="2.5" y="2.5" width="6.5" height="6.5" rx="1.25" stroke="currentColor" strokeWidth="1.5"/>
-      <rect x="11" y="2.5" width="6.5" height="6.5" rx="1.25" stroke="currentColor" strokeWidth="1.5"/>
-      <rect x="2.5" y="11" width="6.5" height="6.5" rx="1.25" stroke="currentColor" strokeWidth="1.5"/>
-      <rect x="11" y="11" width="6.5" height="6.5" rx="1.25" stroke="currentColor" strokeWidth="1.5"/>
-    </svg>
-  )
-}
-
-function TeamIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" className="h-[18px] w-[18px]" aria-hidden="true">
-      <rect x="1.5" y="3" width="17" height="3.5" rx=".75" stroke="currentColor" strokeWidth="1.4"/>
-      <rect x="1.5" y="8.25" width="17" height="3.5" rx=".75" stroke="currentColor" strokeWidth="1.4"/>
-      <rect x="1.5" y="13.5" width="17" height="3.5" rx=".75" stroke="currentColor" strokeWidth="1.4"/>
-    </svg>
-  )
-}
+const CLINICS: { value: ClinicFilter; label: string }[] = [
+  { value: 'all', label: 'All clinics' },
+  { value: 'Varsity Lakes', label: 'Varsity Lakes' },
+  { value: 'Labrador', label: 'Labrador' },
+]
 
 interface NavItemProps {
   icon: React.ReactNode
@@ -132,12 +75,7 @@ function NavItem({ icon, label, active, hasArrow, collapsed, badge, sub }: NavIt
   )
 }
 
-interface SectionHeaderProps {
-  label: string
-  collapsed?: boolean
-}
-
-function SectionHeader({ label, collapsed }: SectionHeaderProps) {
+function SectionHeader({ label, collapsed }: { label: string; collapsed?: boolean }) {
   if (collapsed) return <div className="h-px bg-[#e4d5d9] mx-2 my-2" />
   return (
     <p className="px-3 pt-3 pb-0.5 text-[11.5px] font-medium text-[#a08090] select-none">
@@ -146,8 +84,27 @@ function SectionHeader({ label, collapsed }: SectionHeaderProps) {
   )
 }
 
-export function HeiSidebar() {
+interface HeiSidebarProps {
+  selectedClinic: ClinicFilter
+  onClinicChange: (clinic: ClinicFilter) => void
+}
+
+export function HeiSidebar({ selectedClinic, onClinicChange }: HeiSidebarProps) {
   const [collapsed, setCollapsed] = useState(false)
+  const [clinicOpen, setClinicOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setClinicOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  const currentClinic = CLINICS.find(c => c.value === selectedClinic) ?? CLINICS[0]
 
   return (
     <aside
@@ -190,6 +147,39 @@ export function HeiSidebar() {
         </button>
       )}
 
+      {/* Clinic selector */}
+      {!collapsed && (
+        <div className="px-2 pb-1" ref={dropdownRef}>
+          <div className="relative">
+            <button
+              onClick={() => setClinicOpen(o => !o)}
+              className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg text-[12.5px] text-[#5a3340] hover:bg-[#ede4df] transition-colors"
+            >
+              <MapPin className="h-3.5 w-3.5 shrink-0 text-[#8a6470]" strokeWidth={1.75} />
+              <span className="flex-1 text-left truncate font-medium">{currentClinic.label}</span>
+              <ChevronDown className={cn('h-3.5 w-3.5 text-[#b09aa2] shrink-0 transition-transform', clinicOpen && 'rotate-180')} strokeWidth={1.75} />
+            </button>
+
+            {clinicOpen && (
+              <div className="absolute top-full left-0 right-0 mt-0.5 bg-white border border-[#e2d3d8] rounded-lg shadow-md z-50 py-1 overflow-hidden">
+                {CLINICS.map(c => (
+                  <button
+                    key={c.value}
+                    onClick={() => { onClinicChange(c.value); setClinicOpen(false) }}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 text-[12.5px] text-[#3d1520] hover:bg-[#f7f1ee] transition-colors text-left"
+                  >
+                    <span className="flex-1">{c.label}</span>
+                    {c.value === selectedClinic && (
+                      <Check className="h-3.5 w-3.5 text-[#4c2934] shrink-0" strokeWidth={2} />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* New session button */}
       <div className="px-2 pb-2 pt-1">
         <button
@@ -205,28 +195,20 @@ export function HeiSidebar() {
 
       {/* Primary nav */}
       <nav className="flex-1 overflow-y-auto px-2 py-1 space-y-0.5">
-        <NavItem icon={<ScribeIcon />} label="Scribe" hasArrow collapsed={collapsed} />
-        <NavItem icon={<EvidenceIcon />} label="Evidence" collapsed={collapsed} />
-        <NavItem icon={<TasksIcon />} label="Tasks" collapsed={collapsed} />
-        {/* Comms — active, expanded with Voicemail sub-item */}
-        <NavItem icon={<CommsIcon />} label="Comms" active collapsed={collapsed} />
+        <NavItem icon={<AudioLines className="h-[18px] w-[18px]" strokeWidth={1.5} />} label="Scribe" hasArrow collapsed={collapsed} />
+        <NavItem icon={<BookOpen className="h-[18px] w-[18px]" strokeWidth={1.5} />} label="Evidence" collapsed={collapsed} />
+        <NavItem icon={<TasksIcon className="h-[18px] w-[18px]" />} label="Tasks" collapsed={collapsed} />
+        <NavItem icon={<MessageSquare className="h-[18px] w-[18px]" strokeWidth={1.5} />} label="Comms" active collapsed={collapsed} />
         {!collapsed && (
-          <NavItem
-            icon={null}
-            label="Voicemail"
-            active
-            sub
-            badge={3}
-            collapsed={collapsed}
-          />
+          <NavItem icon={null} label="Voicemail" active sub badge={3} collapsed={collapsed} />
         )}
 
         <SectionHeader label="My Library" collapsed={collapsed} />
-        <NavItem icon={<TemplatesGridIcon />} label="My Templates" collapsed={collapsed} />
+        <NavItem icon={<Blocks className="h-[18px] w-[18px]" strokeWidth={1.5} />} label="My Templates" collapsed={collapsed} />
 
         <SectionHeader label="Community" collapsed={collapsed} />
         <NavItem icon={<Globe className="h-[18px] w-[18px]" strokeWidth={1.5} />} label="Templates" collapsed={collapsed} />
-        <NavItem icon={<TeamIcon />} label="Team" collapsed={collapsed} />
+        <NavItem icon={<Building className="h-[18px] w-[18px]" strokeWidth={1.5} />} label="Team" collapsed={collapsed} />
         <NavItem icon={<Settings className="h-[18px] w-[18px]" strokeWidth={1.5} />} label="Settings" collapsed={collapsed} />
       </nav>
 
@@ -235,7 +217,6 @@ export function HeiSidebar() {
         <NavItem icon={<HelpCircle className="h-[18px] w-[18px]" strokeWidth={1.5} />} label="Help" collapsed={collapsed} />
         <NavItem icon={<Bell className="h-[18px] w-[18px]" strokeWidth={1.5} />} label="Notifications" collapsed={collapsed} />
 
-        {/* User row */}
         <button
           className={cn(
             'w-full flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-[#ede4df] transition-colors',

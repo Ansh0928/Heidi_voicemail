@@ -1,9 +1,22 @@
-import { AlertTriangle, ArrowUp, Flag, Inbox, MapPin } from 'lucide-react'
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+import { AlertTriangle, ArrowUp, Flag, Inbox, MapPin, ChevronDown, Check } from 'lucide-react'
 import type { VoicemailStats } from '@/lib/mock-data'
+import type { ClinicFilter } from '@/app/voicemails/page'
 import { cn } from '@/lib/utils'
+
+const CLINICS: { value: ClinicFilter; label: string }[] = [
+  { value: 'all', label: 'All clinics' },
+  { value: 'Clinic 1', label: 'Clinic 1' },
+  { value: 'Clinic 2', label: 'Clinic 2' },
+  { value: 'Clinic 3', label: 'Clinic 3' },
+]
 
 interface StatsBarProps {
   stats: VoicemailStats
+  selectedClinic: ClinicFilter
+  onClinicChange: (clinic: ClinicFilter) => void
 }
 
 function StatPill({
@@ -28,33 +41,61 @@ function StatPill({
   )
 }
 
-export function StatsBar({ stats }: StatsBarProps) {
+export function StatsBar({ stats, selectedClinic, onClinicChange }: StatsBarProps) {
+  const [open, setOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const now = new Date()
   const timeLabel = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', hour12: true })
+  const currentClinic = CLINICS.find(c => c.value === selectedClinic) ?? CLINICS[0]
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
 
   return (
     <div className="space-y-3">
       {/* Morning brief header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between gap-3">
         <div>
           <h1 className="text-xl font-semibold text-[#28030f] tracking-tight">Morning voicemail</h1>
           <p className="text-sm text-[#8a7078] mt-0.5">
             {stats.total} messages to action · As of {timeLabel}
           </p>
         </div>
-        {/* Location split */}
-        <div className="hidden sm:flex items-center gap-3 text-sm text-[#8a7078]">
-          <div className="flex items-center gap-1.5">
-            <MapPin className="h-3.5 w-3.5" strokeWidth={1.75} />
-            <span className="font-medium text-[#28030f]">Varsity Lakes</span>
-            <span className="font-semibold text-[#28030f]">{stats.varsityLakes}</span>
-          </div>
-          <span className="text-[#d4c4c9]">·</span>
-          <div className="flex items-center gap-1.5">
-            <MapPin className="h-3.5 w-3.5" strokeWidth={1.75} />
-            <span className="font-medium text-[#28030f]">Labrador</span>
-            <span className="font-semibold text-[#28030f]">{stats.labrador}</span>
-          </div>
+
+        {/* Clinic dropdown */}
+        <div className="relative shrink-0" ref={dropdownRef}>
+          <button
+            onClick={() => setOpen(o => !o)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#e2d3d8] bg-white text-[12.5px] text-[#5a3340] hover:bg-[#f7f1ee] transition-colors"
+          >
+            <MapPin className="h-3.5 w-3.5 shrink-0 text-[#8a6470]" strokeWidth={1.75} />
+            <span className="font-medium">{currentClinic.label}</span>
+            <ChevronDown className={cn('h-3.5 w-3.5 text-[#b09aa2] transition-transform', open && 'rotate-180')} strokeWidth={1.75} />
+          </button>
+
+          {open && (
+            <div className="absolute top-full right-0 mt-1 min-w-[140px] bg-white border border-[#e2d3d8] rounded-lg shadow-md z-50 py-1 overflow-hidden">
+              {CLINICS.map(c => (
+                <button
+                  key={c.value}
+                  onClick={() => { onClinicChange(c.value); setOpen(false) }}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 text-[12.5px] text-[#3d1520] hover:bg-[#f7f1ee] transition-colors text-left"
+                >
+                  <span className="flex-1">{c.label}</span>
+                  {c.value === selectedClinic && (
+                    <Check className="h-3.5 w-3.5 text-[#4c2934] shrink-0" strokeWidth={2} />
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
