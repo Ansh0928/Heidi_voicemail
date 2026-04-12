@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-hv-bg: #f9f4f1;
+  --color-hv-surface: #fcfaf8;
+  --color-hv-surface-hover: #f5ede8;
+  --color-hv-border: #d4c4c9;
+  --color-hv-border-light: #e8dde1;
+  --color-hv-text: #28030f;
+  --color-hv-text-muted: #8a7078;
+  --color-hv-primary: #28030f;
+  --color-hv-accent: #fbf582;
+  --color-hv-urgent: #dc2626;
+  --color-hv-urgent-bg: #fef2f2;
+  --color-hv-urgent-border: #fecaca;
+  --color-hv-high: #f97316;
+  --color-hv-high-bg: #fff7ed;
+  --color-hv-high-border: #fed7aa;
+  --color-hv-normal: #588f60;
+  --color-hv-normal-bg: #f0fdf4;
+  --color-hv-normal-border: #bbf7d0;
+  --color-hv-low: #8a7078;
+  --color-hv-low-bg: #f9f4f1;
+  --color-hv-low-border: #d4c4c9;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    border-color: theme(--color-hv-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: theme(--color-hv-bg);
+    color: theme(--color-hv-text);
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .urgency-urgent {
+    border-left-color: theme(--color-hv-urgent);
+    background-color: theme(--color-hv-urgent-bg);
+  }
+  .urgency-high {
+    border-left-color: theme(--color-hv-high);
+    background-color: theme(--color-hv-high-bg);
+  }
+  .urgency-normal {
+    border-left-color: theme(--color-hv-normal);
+  }
+  .urgency-low {
+    border-left-color: theme(--color-hv-low);
+  }
+}
