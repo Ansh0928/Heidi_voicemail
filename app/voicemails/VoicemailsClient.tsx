@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { HeiSidebar } from '@/components/layout/HeiSidebar'
+import { MobileNav } from '@/components/layout/MobileNav'
 import { VoicemailList } from '@/components/voicemail/VoicemailList'
 import type { VoicemailItem, Location } from '@/types/voicemail'
 
@@ -37,9 +38,10 @@ export default function VoicemailsClient({ initialItems, initialSelectedId }: Vo
       <div className="hidden lg:flex shrink-0">
         <HeiSidebar selectedClinic={clinic} onClinicChange={setClinic} />
       </div>
-      <main className="flex-1 overflow-hidden flex flex-col min-w-0">
+      <main className="flex-1 overflow-hidden flex flex-col min-w-0 pb-[56px] lg:pb-0">
         <VoicemailList initialItems={initialItems} selectedClinic={clinic} onClinicChange={setClinic} initialSelectedId={initialSelectedId ?? null} />
       </main>
+      <MobileNav active="comms" />
     </div>
   )
 }
