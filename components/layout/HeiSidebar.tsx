@@ -179,7 +179,7 @@ export function HeiSidebar({ selectedClinic, onClinicChange }: HeiSidebarProps) 
         {!collapsed && (
           <div className="flex items-center gap-2">
             <HeidiMark className="h-8 w-8 text-[#3d1520]" />
-            <span className="text-[20px] font-semibold text-[#3d1520] tracking-normal" style={{ fontFamily: 'var(--font-brand, "Cormorant Garamond", Georgia, serif)' }}>Heidi</span>
+            <span className="text-[20px] font-medium text-[#3d1520] tracking-normal" style={{ fontFamily: 'var(--font-brand, "Lora", Georgia, serif)' }}>Heidi</span>
           </div>
         )}
         {collapsed && <HeidiMark className="h-7 w-7 text-[#3d1520]" />}
