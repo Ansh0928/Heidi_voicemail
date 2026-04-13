@@ -207,8 +207,32 @@ export function VoicemailDetail({ item, onStatusChange, onClose }: VoicemailDeta
       </div>
 
       {/* Action panel */}
-      {item.status !== 'done' && (
+      {item.status === 'done' ? (
+        <div className="border-t border-[#d4c4c9] px-5 py-4 bg-[#fcfaf8] flex items-center gap-3">
+          <span className="flex items-center gap-1.5 text-xs text-[#8a7078]">
+            <Check className="h-3.5 w-3.5 text-emerald-600" strokeWidth={2} />
+            Resolved
+          </span>
+          <button
+            onClick={handleReopen}
+            className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium bg-[#f9f4f1] border border-[#d4c4c9] text-[#28030f] hover:bg-[#f5ede8] transition-colors"
+          >
+            <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.75} />
+            Reopen
+          </button>
+        </div>
+      ) : (
         <div className="border-t border-[#d4c4c9] px-5 py-4 bg-[#fcfaf8]">
+          {/* Assignee / claimant indicator */}
+          {(item.assignedTo || item.claimedBy) && (
+            <div className="mb-2 text-xs text-[#8a7078] flex items-center gap-1.5">
+              <UserCheck className="h-3 w-3" strokeWidth={1.75} />
+              {item.assignedTo
+                ? <span>Assigned to <span className="font-medium text-[#28030f]">{item.assignedTo}</span></span>
+                : <span>Claimed by <span className="font-medium text-[#28030f]">{item.claimedBy}</span></span>
+              }
+            </div>
+          )}
           <textarea
             value={note}
             onChange={e => setNote(e.target.value)}
@@ -216,32 +240,52 @@ export function VoicemailDetail({ item, onStatusChange, onClose }: VoicemailDeta
             rows={2}
             className="w-full text-sm border border-[#d4c4c9] rounded-lg px-3 py-2 bg-[#f9f4f1] text-[#28030f] placeholder:text-[#8a7078] resize-none focus:outline-none focus:border-[#28030f] transition-colors mb-3"
           />
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex gap-2 flex-wrap items-center">
             {item.status === 'new' && (
               <button
-                onClick={() => handleAction('in-progress')}
+                onClick={handleCallBack}
                 className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium bg-[#f9f4f1] border border-[#d4c4c9] text-[#28030f] hover:bg-[#f5ede8] transition-colors"
               >
                 <PhoneCall className="h-3.5 w-3.5" strokeWidth={1.75} />
                 Calling back
               </button>
             )}
+            {/* Assign with dropdown */}
+            <div className="relative" ref={assignRef}>
+              <button
+                onClick={() => setShowAssignDropdown(v => !v)}
+                className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium bg-[#f9f4f1] border border-[#d4c4c9] text-[#28030f] hover:bg-[#f5ede8] transition-colors"
+              >
+                <UserCheck className="h-3.5 w-3.5" strokeWidth={1.75} />
+                Assign
+                <ChevronDown className="h-3 w-3 text-[#8a7078]" />
+              </button>
+              {showAssignDropdown && (
+                <div className="absolute bottom-full mb-1 left-0 z-10 bg-white border border-[#d4c4c9] rounded-lg shadow-lg py-1 min-w-[140px]">
+                  {STAFF.map(s => (
+                    <button
+                      key={s}
+                      onClick={() => handleAssign(s)}
+                      className={cn(
+                        'w-full text-left px-3 py-2 text-sm hover:bg-[#f9f4f1] transition-colors',
+                        item.assignedTo === s ? 'font-semibold text-[#28030f]' : 'text-[#28030f]',
+                      )}
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <button
-              onClick={() => handleAction('in-progress')}
-              className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium bg-[#f9f4f1] border border-[#d4c4c9] text-[#28030f] hover:bg-[#f5ede8] transition-colors"
-            >
-              <UserCheck className="h-3.5 w-3.5" strokeWidth={1.75} />
-              Assign
-            </button>
-            <button
-              onClick={() => handleAction('done')}
+              onClick={handleResolve}
               className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium bg-[#28030f] text-[#f9f4f1] hover:bg-[#3d0518] transition-colors"
             >
               <Check className="h-3.5 w-3.5" strokeWidth={2} />
               Resolve
             </button>
             <button
-              onClick={() => handleAction('done')}
+              onClick={handleArchive}
               className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-[#8a7078] hover:text-[#28030f] transition-colors ml-auto"
             >
               <Archive className="h-3.5 w-3.5" strokeWidth={1.75} />
