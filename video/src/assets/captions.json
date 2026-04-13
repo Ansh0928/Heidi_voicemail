@@ -1,0 +1,954 @@
+[
+  {
+    "word": "Every",
+    "startTime": 0.0,
+    "endTime": 0.29,
+    "startFrame": 0,
+    "endFrame": 8
+  },
+  {
+    "word": "morning,",
+    "startTime": 0.348,
+    "endTime": 0.848,
+    "startFrame": 10,
+    "endFrame": 25
+  },
+  {
+    "word": "the",
+    "startTime": 1.126,
+    "endTime": 1.242,
+    "startFrame": 33,
+    "endFrame": 37
+  },
+  {
+    "word": "same",
+    "startTime": 1.358,
+    "endTime": 1.73,
+    "startFrame": 40,
+    "endFrame": 51
+  },
+  {
+    "word": "problem.",
+    "startTime": 1.788,
+    "endTime": 2.38,
+    "startFrame": 53,
+    "endFrame": 71
+  },
+  {
+    "word": "Twenty-three",
+    "startTime": 2.984,
+    "endTime": 3.576,
+    "startFrame": 89,
+    "endFrame": 107
+  },
+  {
+    "word": "voicemails.",
+    "startTime": 3.634,
+    "endTime": 4.412,
+    "startFrame": 109,
+    "endFrame": 132
+  },
+  {
+    "word": "No",
+    "startTime": 4.923,
+    "endTime": 5.097,
+    "startFrame": 147,
+    "endFrame": 152
+  },
+  {
+    "word": "urgency",
+    "startTime": 5.166,
+    "endTime": 5.561,
+    "startFrame": 154,
+    "endFrame": 166
+  },
+  {
+    "word": "signals.",
+    "startTime": 5.619,
+    "endTime": 6.258,
+    "startFrame": 168,
+    "endFrame": 187
+  },
+  {
+    "word": "No",
+    "startTime": 6.374,
+    "endTime": 6.502,
+    "startFrame": 191,
+    "endFrame": 195
+  },
+  {
+    "word": "context.",
+    "startTime": 6.583,
+    "endTime": 7.268,
+    "startFrame": 197,
+    "endFrame": 218
+  },
+  {
+    "word": "Just",
+    "startTime": 7.651,
+    "endTime": 7.895,
+    "startFrame": 229,
+    "endFrame": 236
+  },
+  {
+    "word": "recordings",
+    "startTime": 7.953,
+    "endTime": 8.499,
+    "startFrame": 238,
+    "endFrame": 254
+  },
+  {
+    "word": "\u2014",
+    "startTime": 8.626,
+    "endTime": 8.777,
+    "startFrame": 258,
+    "endFrame": 263
+  },
+  {
+    "word": "and",
+    "startTime": 8.951,
+    "endTime": 9.218,
+    "startFrame": 268,
+    "endFrame": 276
+  },
+  {
+    "word": "a",
+    "startTime": 9.288,
+    "endTime": 9.311,
+    "startFrame": 278,
+    "endFrame": 279
+  },
+  {
+    "word": "clinic",
+    "startTime": 9.369,
+    "endTime": 9.636,
+    "startFrame": 281,
+    "endFrame": 289
+  },
+  {
+    "word": "about",
+    "startTime": 9.671,
+    "endTime": 9.892,
+    "startFrame": 290,
+    "endFrame": 296
+  },
+  {
+    "word": "to",
+    "startTime": 9.927,
+    "endTime": 9.985,
+    "startFrame": 297,
+    "endFrame": 299
+  },
+  {
+    "word": "open.",
+    "startTime": 10.066,
+    "endTime": 10.507,
+    "startFrame": 301,
+    "endFrame": 315
+  },
+  {
+    "word": "Listening",
+    "startTime": 11.111,
+    "endTime": 11.482,
+    "startFrame": 333,
+    "endFrame": 344
+  },
+  {
+    "word": "to",
+    "startTime": 11.54,
+    "endTime": 11.598,
+    "startFrame": 346,
+    "endFrame": 347
+  },
+  {
+    "word": "every",
+    "startTime": 11.691,
+    "endTime": 11.993,
+    "startFrame": 350,
+    "endFrame": 359
+  },
+  {
+    "word": "one",
+    "startTime": 12.051,
+    "endTime": 12.237,
+    "startFrame": 361,
+    "endFrame": 367
+  },
+  {
+    "word": "takes",
+    "startTime": 12.295,
+    "endTime": 12.562,
+    "startFrame": 368,
+    "endFrame": 376
+  },
+  {
+    "word": "40",
+    "startTime": 12.632,
+    "endTime": 12.875,
+    "startFrame": 378,
+    "endFrame": 386
+  },
+  {
+    "word": "minutes.",
+    "startTime": 12.945,
+    "endTime": 13.433,
+    "startFrame": 388,
+    "endFrame": 402
+  },
+  {
+    "word": "That's",
+    "startTime": 14.036,
+    "endTime": 14.28,
+    "startFrame": 421,
+    "endFrame": 428
+  },
+  {
+    "word": "before",
+    "startTime": 14.315,
+    "endTime": 14.559,
+    "startFrame": 429,
+    "endFrame": 436
+  },
+  {
+    "word": "you've",
+    "startTime": 14.594,
+    "endTime": 14.768,
+    "startFrame": 437,
+    "endFrame": 443
+  },
+  {
+    "word": "booked",
+    "startTime": 14.791,
+    "endTime": 15.0,
+    "startFrame": 443,
+    "endFrame": 450
+  },
+  {
+    "word": "a",
+    "startTime": 15.035,
+    "endTime": 15.058,
+    "startFrame": 451,
+    "endFrame": 451
+  },
+  {
+    "word": "single",
+    "startTime": 15.174,
+    "endTime": 15.511,
+    "startFrame": 455,
+    "endFrame": 465
+  },
+  {
+    "word": "appointment.",
+    "startTime": 15.534,
+    "endTime": 16.208,
+    "startFrame": 466,
+    "endFrame": 486
+  },
+  {
+    "word": "Heidi",
+    "startTime": 16.905,
+    "endTime": 17.276,
+    "startFrame": 507,
+    "endFrame": 518
+  },
+  {
+    "word": "Intelligence",
+    "startTime": 17.323,
+    "endTime": 17.868,
+    "startFrame": 519,
+    "endFrame": 536
+  },
+  {
+    "word": "runs",
+    "startTime": 17.915,
+    "endTime": 18.17,
+    "startFrame": 537,
+    "endFrame": 545
+  },
+  {
+    "word": "overnight.",
+    "startTime": 18.217,
+    "endTime": 18.832,
+    "startFrame": 546,
+    "endFrame": 564
+  },
+  {
+    "word": "Deepgram",
+    "startTime": 19.436,
+    "endTime": 20.016,
+    "startFrame": 583,
+    "endFrame": 600
+  },
+  {
+    "word": "transcribes",
+    "startTime": 20.074,
+    "endTime": 20.736,
+    "startFrame": 602,
+    "endFrame": 622
+  },
+  {
+    "word": "every",
+    "startTime": 20.887,
+    "endTime": 21.212,
+    "startFrame": 626,
+    "endFrame": 636
+  },
+  {
+    "word": "recording",
+    "startTime": 21.293,
+    "endTime": 21.746,
+    "startFrame": 638,
+    "endFrame": 652
+  },
+  {
+    "word": "\u2014",
+    "startTime": 21.92,
+    "endTime": 22.117,
+    "startFrame": 657,
+    "endFrame": 663
+  },
+  {
+    "word": "speaker",
+    "startTime": 22.396,
+    "endTime": 22.768,
+    "startFrame": 671,
+    "endFrame": 683
+  },
+  {
+    "word": "by",
+    "startTime": 22.802,
+    "endTime": 22.907,
+    "startFrame": 684,
+    "endFrame": 687
+  },
+  {
+    "word": "speaker.",
+    "startTime": 22.965,
+    "endTime": 23.534,
+    "startFrame": 688,
+    "endFrame": 706
+  },
+  {
+    "word": "Claude",
+    "startTime": 24.138,
+    "endTime": 24.509,
+    "startFrame": 724,
+    "endFrame": 735
+  },
+  {
+    "word": "scores",
+    "startTime": 24.556,
+    "endTime": 24.892,
+    "startFrame": 736,
+    "endFrame": 746
+  },
+  {
+    "word": "the",
+    "startTime": 24.927,
+    "endTime": 24.997,
+    "startFrame": 747,
+    "endFrame": 749
+  },
+  {
+    "word": "urgency,",
+    "startTime": 25.043,
+    "endTime": 25.705,
+    "startFrame": 751,
+    "endFrame": 771
+  },
+  {
+    "word": "identifies",
+    "startTime": 25.879,
+    "endTime": 26.471,
+    "startFrame": 776,
+    "endFrame": 794
+  },
+  {
+    "word": "the",
+    "startTime": 26.518,
+    "endTime": 26.587,
+    "startFrame": 795,
+    "endFrame": 797
+  },
+  {
+    "word": "intent,",
+    "startTime": 26.634,
+    "endTime": 27.191,
+    "startFrame": 799,
+    "endFrame": 815
+  },
+  {
+    "word": "and",
+    "startTime": 27.4,
+    "endTime": 27.563,
+    "startFrame": 822,
+    "endFrame": 826
+  },
+  {
+    "word": "writes",
+    "startTime": 27.632,
+    "endTime": 27.934,
+    "startFrame": 828,
+    "endFrame": 838
+  },
+  {
+    "word": "a",
+    "startTime": 27.969,
+    "endTime": 28.004,
+    "startFrame": 839,
+    "endFrame": 840
+  },
+  {
+    "word": "suggested",
+    "startTime": 28.05,
+    "endTime": 28.619,
+    "startFrame": 841,
+    "endFrame": 858
+  },
+  {
+    "word": "action.",
+    "startTime": 28.677,
+    "endTime": 29.142,
+    "startFrame": 860,
+    "endFrame": 874
+  },
+  {
+    "word": "Done",
+    "startTime": 29.583,
+    "endTime": 29.861,
+    "startFrame": 887,
+    "endFrame": 895
+  },
+  {
+    "word": "before",
+    "startTime": 29.908,
+    "endTime": 30.244,
+    "startFrame": 897,
+    "endFrame": 907
+  },
+  {
+    "word": "anyone",
+    "startTime": 30.337,
+    "endTime": 30.755,
+    "startFrame": 910,
+    "endFrame": 922
+  },
+  {
+    "word": "arrives.",
+    "startTime": 30.779,
+    "endTime": 31.405,
+    "startFrame": 923,
+    "endFrame": 942
+  },
+  {
+    "word": "The",
+    "startTime": 31.847,
+    "endTime": 31.986,
+    "startFrame": 955,
+    "endFrame": 959
+  },
+  {
+    "word": "admin",
+    "startTime": 32.056,
+    "endTime": 32.439,
+    "startFrame": 961,
+    "endFrame": 973
+  },
+  {
+    "word": "opens",
+    "startTime": 32.555,
+    "endTime": 32.95,
+    "startFrame": 976,
+    "endFrame": 988
+  },
+  {
+    "word": "the",
+    "startTime": 32.996,
+    "endTime": 33.066,
+    "startFrame": 989,
+    "endFrame": 991
+  },
+  {
+    "word": "dashboard.",
+    "startTime": 33.101,
+    "endTime": 33.716,
+    "startFrame": 993,
+    "endFrame": 1011
+  },
+  {
+    "word": "Everything",
+    "startTime": 34.227,
+    "endTime": 34.738,
+    "startFrame": 1026,
+    "endFrame": 1042
+  },
+  {
+    "word": "is",
+    "startTime": 34.819,
+    "endTime": 34.947,
+    "startFrame": 1044,
+    "endFrame": 1048
+  },
+  {
+    "word": "already",
+    "startTime": 35.016,
+    "endTime": 35.504,
+    "startFrame": 1050,
+    "endFrame": 1065
+  },
+  {
+    "word": "sorted.",
+    "startTime": 35.574,
+    "endTime": 36.073,
+    "startFrame": 1067,
+    "endFrame": 1082
+  },
+  {
+    "word": "Dorothy",
+    "startTime": 36.514,
+    "endTime": 36.862,
+    "startFrame": 1095,
+    "endFrame": 1105
+  },
+  {
+    "word": "Lim",
+    "startTime": 36.932,
+    "endTime": 37.164,
+    "startFrame": 1107,
+    "endFrame": 1114
+  },
+  {
+    "word": "\u2014",
+    "startTime": 37.338,
+    "endTime": 37.397,
+    "startFrame": 1120,
+    "endFrame": 1121
+  },
+  {
+    "word": "urgent.",
+    "startTime": 37.606,
+    "endTime": 38.221,
+    "startFrame": 1128,
+    "endFrame": 1146
+  },
+  {
+    "word": "Chest",
+    "startTime": 38.499,
+    "endTime": 38.813,
+    "startFrame": 1154,
+    "endFrame": 1164
+  },
+  {
+    "word": "tightness,",
+    "startTime": 38.894,
+    "endTime": 39.591,
+    "startFrame": 1166,
+    "endFrame": 1187
+  },
+  {
+    "word": "history",
+    "startTime": 39.8,
+    "endTime": 40.16,
+    "startFrame": 1194,
+    "endFrame": 1204
+  },
+  {
+    "word": "of",
+    "startTime": 40.218,
+    "endTime": 40.264,
+    "startFrame": 1206,
+    "endFrame": 1207
+  },
+  {
+    "word": "hypertension.",
+    "startTime": 40.322,
+    "endTime": 41.077,
+    "startFrame": 1209,
+    "endFrame": 1232
+  },
+  {
+    "word": "Suggested",
+    "startTime": 41.681,
+    "endTime": 42.203,
+    "startFrame": 1250,
+    "endFrame": 1266
+  },
+  {
+    "word": "action:",
+    "startTime": 42.249,
+    "endTime": 42.702,
+    "startFrame": 1267,
+    "endFrame": 1281
+  },
+  {
+    "word": "call",
+    "startTime": 42.981,
+    "endTime": 43.178,
+    "startFrame": 1289,
+    "endFrame": 1295
+  },
+  {
+    "word": "back",
+    "startTime": 43.236,
+    "endTime": 43.387,
+    "startFrame": 1297,
+    "endFrame": 1301
+  },
+  {
+    "word": "immediately.",
+    "startTime": 43.434,
+    "endTime": 44.13,
+    "startFrame": 1303,
+    "endFrame": 1323
+  },
+  {
+    "word": "One",
+    "startTime": 44.571,
+    "endTime": 44.78,
+    "startFrame": 1337,
+    "endFrame": 1343
+  },
+  {
+    "word": "click.",
+    "startTime": 44.815,
+    "endTime": 45.222,
+    "startFrame": 1344,
+    "endFrame": 1356
+  },
+  {
+    "word": "Next.",
+    "startTime": 45.547,
+    "endTime": 46.058,
+    "startFrame": 1366,
+    "endFrame": 1381
+  },
+  {
+    "word": "Sunita",
+    "startTime": 46.499,
+    "endTime": 46.963,
+    "startFrame": 1394,
+    "endFrame": 1408
+  },
+  {
+    "word": "Rai",
+    "startTime": 47.021,
+    "endTime": 47.323,
+    "startFrame": 1410,
+    "endFrame": 1419
+  },
+  {
+    "word": "\u2014",
+    "startTime": 47.497,
+    "endTime": 47.578,
+    "startFrame": 1424,
+    "endFrame": 1427
+  },
+  {
+    "word": "infant",
+    "startTime": 47.904,
+    "endTime": 48.31,
+    "startFrame": 1437,
+    "endFrame": 1449
+  },
+  {
+    "word": "with",
+    "startTime": 48.368,
+    "endTime": 48.507,
+    "startFrame": 1451,
+    "endFrame": 1455
+  },
+  {
+    "word": "a",
+    "startTime": 48.542,
+    "endTime": 48.565,
+    "startFrame": 1456,
+    "endFrame": 1456
+  },
+  {
+    "word": "fever.",
+    "startTime": 48.635,
+    "endTime": 49.134,
+    "startFrame": 1459,
+    "endFrame": 1474
+  },
+  {
+    "word": "Priority",
+    "startTime": 49.645,
+    "endTime": 50.075,
+    "startFrame": 1489,
+    "endFrame": 1502
+  },
+  {
+    "word": "callback.",
+    "startTime": 50.133,
+    "endTime": 50.748,
+    "startFrame": 1503,
+    "endFrame": 1522
+  },
+  {
+    "word": "Resolved.",
+    "startTime": 50.992,
+    "endTime": 51.642,
+    "startFrame": 1529,
+    "endFrame": 1549
+  },
+  {
+    "word": "Not",
+    "startTime": 52.153,
+    "endTime": 52.362,
+    "startFrame": 1564,
+    "endFrame": 1570
+  },
+  {
+    "word": "a",
+    "startTime": 52.397,
+    "endTime": 52.42,
+    "startFrame": 1571,
+    "endFrame": 1572
+  },
+  {
+    "word": "single",
+    "startTime": 52.536,
+    "endTime": 52.942,
+    "startFrame": 1576,
+    "endFrame": 1588
+  },
+  {
+    "word": "recording",
+    "startTime": 52.977,
+    "endTime": 53.407,
+    "startFrame": 1589,
+    "endFrame": 1602
+  },
+  {
+    "word": "played",
+    "startTime": 53.476,
+    "endTime": 53.743,
+    "startFrame": 1604,
+    "endFrame": 1612
+  },
+  {
+    "word": "in",
+    "startTime": 53.778,
+    "endTime": 53.848,
+    "startFrame": 1613,
+    "endFrame": 1615
+  },
+  {
+    "word": "full.",
+    "startTime": 53.929,
+    "endTime": 54.37,
+    "startFrame": 1617,
+    "endFrame": 1631
+  },
+  {
+    "word": "Heidi",
+    "startTime": 54.881,
+    "endTime": 55.264,
+    "startFrame": 1646,
+    "endFrame": 1657
+  },
+  {
+    "word": "handles",
+    "startTime": 55.346,
+    "endTime": 55.705,
+    "startFrame": 1660,
+    "endFrame": 1671
+  },
+  {
+    "word": "the",
+    "startTime": 55.752,
+    "endTime": 55.822,
+    "startFrame": 1672,
+    "endFrame": 1674
+  },
+  {
+    "word": "information",
+    "startTime": 55.868,
+    "endTime": 56.379,
+    "startFrame": 1676,
+    "endFrame": 1691
+  },
+  {
+    "word": "work.",
+    "startTime": 56.425,
+    "endTime": 56.82,
+    "startFrame": 1692,
+    "endFrame": 1704
+  },
+  {
+    "word": "The",
+    "startTime": 57.261,
+    "endTime": 57.389,
+    "startFrame": 1717,
+    "endFrame": 1721
+  },
+  {
+    "word": "human",
+    "startTime": 57.447,
+    "endTime": 57.737,
+    "startFrame": 1723,
+    "endFrame": 1732
+  },
+  {
+    "word": "handles",
+    "startTime": 57.784,
+    "endTime": 58.12,
+    "startFrame": 1733,
+    "endFrame": 1743
+  },
+  {
+    "word": "everything",
+    "startTime": 58.236,
+    "endTime": 58.712,
+    "startFrame": 1747,
+    "endFrame": 1761
+  },
+  {
+    "word": "else",
+    "startTime": 58.771,
+    "endTime": 59.084,
+    "startFrame": 1763,
+    "endFrame": 1772
+  },
+  {
+    "word": "\u2014",
+    "startTime": 59.165,
+    "endTime": 59.212,
+    "startFrame": 1774,
+    "endFrame": 1776
+  },
+  {
+    "word": "the",
+    "startTime": 59.363,
+    "endTime": 59.479,
+    "startFrame": 1780,
+    "endFrame": 1784
+  },
+  {
+    "word": "judgment,",
+    "startTime": 59.56,
+    "endTime": 60.094,
+    "startFrame": 1786,
+    "endFrame": 1802
+  },
+  {
+    "word": "the",
+    "startTime": 60.21,
+    "endTime": 60.315,
+    "startFrame": 1806,
+    "endFrame": 1809
+  },
+  {
+    "word": "care,",
+    "startTime": 60.384,
+    "endTime": 60.849,
+    "startFrame": 1811,
+    "endFrame": 1825
+  },
+  {
+    "word": "the",
+    "startTime": 61.023,
+    "endTime": 61.127,
+    "startFrame": 1830,
+    "endFrame": 1833
+  },
+  {
+    "word": "call.",
+    "startTime": 61.185,
+    "endTime": 61.696,
+    "startFrame": 1835,
+    "endFrame": 1850
+  },
+  {
+    "word": "Twenty",
+    "startTime": 62.021,
+    "endTime": 62.323,
+    "startFrame": 1860,
+    "endFrame": 1869
+  },
+  {
+    "word": "voicemails.",
+    "startTime": 62.381,
+    "endTime": 63.031,
+    "startFrame": 1871,
+    "endFrame": 1890
+  },
+  {
+    "word": "Eight",
+    "startTime": 63.113,
+    "endTime": 63.322,
+    "startFrame": 1893,
+    "endFrame": 1899
+  },
+  {
+    "word": "minutes.",
+    "startTime": 63.368,
+    "endTime": 63.891,
+    "startFrame": 1901,
+    "endFrame": 1916
+  },
+  {
+    "word": "Zero",
+    "startTime": 64.134,
+    "endTime": 64.599,
+    "startFrame": 1924,
+    "endFrame": 1937
+  },
+  {
+    "word": "urgent",
+    "startTime": 64.715,
+    "endTime": 65.052,
+    "startFrame": 1941,
+    "endFrame": 1951
+  },
+  {
+    "word": "calls",
+    "startTime": 65.11,
+    "endTime": 65.423,
+    "startFrame": 1953,
+    "endFrame": 1962
+  },
+  {
+    "word": "missed.",
+    "startTime": 65.481,
+    "endTime": 65.911,
+    "startFrame": 1964,
+    "endFrame": 1977
+  },
+  {
+    "word": "This",
+    "startTime": 66.421,
+    "endTime": 66.665,
+    "startFrame": 1992,
+    "endFrame": 1999
+  },
+  {
+    "word": "is",
+    "startTime": 66.723,
+    "endTime": 66.805,
+    "startFrame": 2001,
+    "endFrame": 2004
+  },
+  {
+    "word": "Heidi",
+    "startTime": 66.886,
+    "endTime": 67.223,
+    "startFrame": 2006,
+    "endFrame": 2016
+  },
+  {
+    "word": "Voicemail",
+    "startTime": 67.339,
+    "endTime": 67.838,
+    "startFrame": 2020,
+    "endFrame": 2035
+  },
+  {
+    "word": "Intelligence.",
+    "startTime": 67.896,
+    "endTime": 68.825,
+    "startFrame": 2036,
+    "endFrame": 2064
+  }
+]
