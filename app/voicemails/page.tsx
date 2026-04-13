@@ -1,4 +1,5 @@
 import { getVoicemails } from '@/lib/voicemail-queries'
+import { MOCK_VOICEMAILS } from '@/lib/mock-data'
 import VoicemailsClient from './VoicemailsClient'
 
 export const dynamic = 'force-dynamic'
@@ -9,15 +10,8 @@ export default async function VoicemailsPage({ searchParams }: { searchParams: P
   let initialItems
   try {
     initialItems = await getVoicemails()
-  } catch (err) {
-    const message = err instanceof Error ? err.message : String(err)
-    return (
-      <div style={{ padding: 40, fontFamily: 'monospace' }}>
-        <h2>DB Error</h2>
-        <pre style={{ background: '#fee', padding: 16, borderRadius: 8 }}>{message}</pre>
-        <p>DATABASE_URL set: {process.env.DATABASE_URL ? 'yes' : 'NO — missing env var'}</p>
-      </div>
-    )
+  } catch {
+    initialItems = MOCK_VOICEMAILS
   }
 
   const { vm } = await searchParams

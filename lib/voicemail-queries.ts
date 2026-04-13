@@ -38,6 +38,7 @@ export async function createSchema(): Promise<void> {
 }
 
 export async function getVoicemails(clinic?: string): Promise<VoicemailItem[]> {
+  if (!sql) throw new Error('No DATABASE_URL')
   const rows = clinic && clinic !== 'all'
     ? await sql`
         SELECT v.*, COALESCE(
