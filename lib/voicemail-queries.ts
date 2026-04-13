@@ -2,6 +2,7 @@ import { sql } from './db'
 import type { VoicemailItem, VoicemailStatus, UrgencyLevel, IntentCode, Location } from '@/types/voicemail'
 
 export async function createSchema(): Promise<void> {
+  if (!sql) throw new Error('No DATABASE_URL')
   await sql`
     CREATE TABLE IF NOT EXISTS voicemails (
       id TEXT PRIMARY KEY,
