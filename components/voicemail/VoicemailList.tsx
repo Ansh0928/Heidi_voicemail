@@ -15,11 +15,12 @@ interface VoicemailListProps {
   initialItems: VoicemailItem[]
   selectedClinic: ClinicFilter
   onClinicChange: (clinic: ClinicFilter) => void
+  initialSelectedId?: string | null
 }
 
-export function VoicemailList({ initialItems, selectedClinic, onClinicChange }: VoicemailListProps) {
+export function VoicemailList({ initialItems, selectedClinic, onClinicChange, initialSelectedId }: VoicemailListProps) {
   const [items, setItems] = useState<VoicemailItem[]>(initialItems)
-  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [selectedId, setSelectedId] = useState<string | null>(initialSelectedId ?? null)
   const [urgencyFilter, setUrgencyFilter] = useState<UrgencyFilter>('all')
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('new')
   const [flaggedOnly, setFlaggedOnly] = useState(false)
