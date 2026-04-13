@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
-  variable: '--font-serif',
+  variable: '--font-brand',
 })
 
 export const metadata: Metadata = {
