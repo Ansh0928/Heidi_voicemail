@@ -150,7 +150,7 @@ export function MobileHeader({ selectedClinic, onClinicChange }: MobileHeaderPro
         </button>
         <div className="flex items-center gap-2">
           <HeidiMark className="h-6 w-6 text-[#3d1520]" />
-          <span className="text-[16px] font-bold text-[#3d1520] tracking-tight">Heidi</span>
+          <span className="font-serif text-[20px] font-semibold text-[#3d1520] tracking-normal">Heidi</span>
         </div>
       </header>
 
@@ -186,7 +186,7 @@ export function MobileHeader({ selectedClinic, onClinicChange }: MobileHeaderPro
           {/* Logo */}
           <div className="flex items-center gap-2.5 py-4">
             <HeidiMark className="h-8 w-8 text-[#3d1520]" />
-            <span className="text-[20px] font-bold text-[#3d1520] tracking-tight">Heidi</span>
+            <span className="font-serif text-[24px] font-semibold text-[#3d1520] tracking-normal">Heidi</span>
           </div>
 
           {/* Clinic selector */}
