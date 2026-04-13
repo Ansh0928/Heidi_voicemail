@@ -12,6 +12,7 @@ import {
   Flag,
   ChevronDown,
   ChevronUp,
+  ChevronLeft,
   Check,
   PhoneCall,
   UserCheck,
@@ -74,7 +75,7 @@ export function VoicemailDetail({ item, onStatusChange, onClose }: VoicemailDeta
   }
 
   return (
-    <div className="flex flex-col h-full bg-[#fcfaf8] rounded-lg border border-[#d4c4c9] overflow-hidden">
+    <div className="flex flex-col h-full bg-[#fcfaf8] lg:rounded-lg lg:border lg:border-[#d4c4c9] overflow-hidden">
       {/* Header */}
       <div
         className="px-5 py-4 border-b border-[#d4c4c9]"
@@ -107,8 +108,14 @@ export function VoicemailDetail({ item, onStatusChange, onClose }: VoicemailDeta
               </span>
             </div>
           </div>
-          <button onClick={onClose} className="text-[#8a7078] hover:text-[#28030f] text-sm shrink-0">
-            ✕
+          <button
+            onClick={onClose}
+            className="flex items-center gap-1 text-[#8a7078] hover:text-[#28030f] transition-colors shrink-0"
+            aria-label="Go back"
+          >
+            <ChevronLeft className="h-4 w-4 lg:hidden" strokeWidth={2} />
+            <span className="text-sm font-medium lg:hidden">Back</span>
+            <span className="hidden lg:inline text-sm">✕</span>
           </button>
         </div>
       </div>

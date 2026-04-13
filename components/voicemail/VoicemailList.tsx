@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { cn } from '@/lib/utils'
 import type { VoicemailItem, VoicemailStatus } from '@/types/voicemail'
 import type { ClinicFilter } from '@/app/voicemails/page'
 import { sortByUrgency } from '@/lib/urgency'
@@ -69,10 +70,16 @@ export function VoicemailList({ initialItems, selectedClinic, onClinicChange, in
     )
   }
 
+  const showDetail = selectedId !== null
+
   return (
-    <div className="flex gap-0 h-full overflow-hidden">
-      {/* List panel */}
-      <div className="flex flex-col w-full lg:w-[420px] xl:w-[460px] shrink-0 border-r border-[#e2d3d8] bg-[#f9f4f1]">
+    <div className="flex h-full overflow-hidden">
+      {/* List panel — hidden on mobile when detail is open */}
+      <div className={cn(
+        'flex-col shrink-0 border-r border-[#e2d3d8] bg-[#f9f4f1]',
+        'w-full lg:w-[420px] xl:w-[460px]',
+        showDetail ? 'hidden lg:flex' : 'flex',
+      )}>
         <div className="px-4 pt-5 pb-3 space-y-3">
           <StatsBar stats={stats} selectedClinic={selectedClinic} onClinicChange={onClinicChange} />
           <FilterBar
@@ -110,8 +117,11 @@ export function VoicemailList({ initialItems, selectedClinic, onClinicChange, in
         </div>
       </div>
 
-      {/* Detail panel */}
-      <div className="hidden lg:flex flex-1 min-w-0 h-full bg-white">
+      {/* Detail panel — full-screen on mobile when open, always visible on lg+ */}
+      <div className={cn(
+        'min-w-0 h-full bg-white',
+        showDetail ? 'flex flex-1' : 'hidden lg:flex lg:flex-1',
+      )}>
         {selectedItem ? (
           <div className="w-full h-full">
             <VoicemailDetail

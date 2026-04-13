@@ -47,6 +47,15 @@ const CLINICS: { value: ClinicFilter; label: string }[] = [
   { value: 'Clinic 3', label: 'Clinic 3' },
 ]
 
+/** Demo shell user — single source for sidebar profile + debug audit */
+const SIDEBAR_PROFILE = {
+  initials: 'SB',
+  displayName: 'Shaz Brahmavar',
+  email: 'shaz@harbourgp.com',
+} as const
+
+let __heiSidebarMountSeq = 0
+
 interface NavItemProps {
   icon: React.ReactNode
   label: string
@@ -116,6 +125,41 @@ export function HeiSidebar({ selectedClinic, onClinicChange }: HeiSidebarProps) 
     document.addEventListener('mousedown', handleClick)
     return () => document.removeEventListener('mousedown', handleClick)
   }, [])
+
+  // #region agent log
+  useEffect(() => {
+    __heiSidebarMountSeq += 1
+    const seq = __heiSidebarMountSeq
+    const profile = SIDEBAR_PROFILE
+    const raf = requestAnimationFrame(() => {
+      const el = document.querySelector('[data-audit="sidebar-profile"]') as HTMLElement | null
+      const domSnapshot = el?.innerText?.replace(/\s+/g, ' ').trim() ?? null
+      fetch('http://127.0.0.1:7546/ingest/7e31a13d-614d-4700-af67-b2ef74602912', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'b883d9' },
+        body: JSON.stringify({
+          sessionId: 'b883d9',
+          hypothesisId: 'H1-H3-H5',
+          location: 'HeiSidebar.tsx:audit',
+          message: 'sidebar profile runtime audit',
+          data: {
+            mountSeq: seq,
+            collapsed,
+            sourceProfile: profile,
+            domSnapshot,
+            domIncludesExpectedName: domSnapshot?.includes(profile.displayName) ?? false,
+            domIncludesInitials: domSnapshot?.includes(profile.initials) ?? false,
+            auditNote: collapsed
+              ? 'H3: collapsed — DOM may omit full name/email'
+              : 'expanded — expect full name in DOM snapshot',
+          },
+          timestamp: Date.now(),
+        }),
+      }).catch(() => {})
+    })
+    return () => cancelAnimationFrame(raf)
+  }, [collapsed])
+  // #endregion
 
   const currentClinic = CLINICS.find(c => c.value === selectedClinic) ?? CLINICS[0]
 
@@ -228,18 +272,20 @@ export function HeiSidebar({ selectedClinic, onClinicChange }: HeiSidebarProps) 
         <NavItem icon={<Bell className="h-[18px] w-[18px]" strokeWidth={1.5} />} label="Notifications" collapsed={collapsed} />
 
         <button
+          type="button"
+          data-audit="sidebar-profile"
           className={cn(
             'w-full flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-[#ede4df] transition-colors',
             collapsed && 'justify-center px-2'
           )}
         >
           <div className="h-7 w-7 rounded-full bg-[#4c2934] flex items-center justify-center shrink-0">
-            <span className="text-[#f9f4f1] text-[10px] font-bold tracking-tight">SB</span>
+            <span className="text-[#f9f4f1] text-[10px] font-bold tracking-tight">{SIDEBAR_PROFILE.initials}</span>
           </div>
           {!collapsed && (
             <div className="text-left min-w-0">
-              <p className="text-[13px] font-medium text-[#3d1520] truncate leading-tight">Shaz Brahmavar</p>
-              <p className="text-[11px] text-[#a08090] truncate">shaz@harbourgp.com</p>
+              <p className="text-[13px] font-medium text-[#3d1520] truncate leading-tight">{SIDEBAR_PROFILE.displayName}</p>
+              <p className="text-[11px] text-[#a08090] truncate">{SIDEBAR_PROFILE.email}</p>
             </div>
           )}
         </button>
